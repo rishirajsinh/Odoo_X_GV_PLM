@@ -12,7 +12,7 @@ router.get('/', authMiddleware, async (req, res) => {
     const limit = parseInt(req.query.limit, 10) || 10;
     const offset = (page - 1) * limit;
 
-    let sql = 'SELECT id, name, email, role, avatar, status, created_at FROM users WHERE 1=1';
+    let sql = 'SELECT id, name, email, role, status, created_at FROM users WHERE 1=1';
     const params = [];
 
     if (req.query.search) {
@@ -51,7 +51,7 @@ router.get('/', authMiddleware, async (req, res) => {
 router.get('/:id', authMiddleware, async (req, res) => {
   try {
     const result = await req.db(
-      'SELECT id, name, email, role, avatar, status FROM users WHERE id = $1',
+      'SELECT id, name, email, role, status FROM users WHERE id = $1',
       [req.params.id]
     );
 
@@ -79,9 +79,9 @@ router.post('/', authMiddleware, roleMiddleware(['Admin']), async (req, res) => 
     const id = `u${Date.now()}`;
 
     const result = await req.db(
-      `INSERT INTO users (id, name, email, password, role, avatar, status, created_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, NOW()) RETURNING id, name, email, role, avatar, status`,
-      [id, name, email.toLowerCase(), hashedPassword, role, avatar, status || 'Active']
+      `INSERT INTO users (id, name, email, password, role, status, created_at)
+       VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING id, name, email, role, status`,
+      [id, name, email.toLowerCase(), hashedPassword, role, status || 'Active']
     );
     
     res.status(201).json({ 
@@ -114,10 +114,9 @@ router.put('/:id', authMiddleware, roleMiddleware(['Admin']), async (req, res) =
            email = COALESCE($2, email), 
            role = COALESCE($3, role), 
            status = COALESCE($4, status),
-           avatar = COALESCE($5, avatar),
            updated_at = NOW()
-       WHERE id = $6 RETURNING id, name, email, role, avatar, status`,
-      [name, email?.toLowerCase(), role, status, avatar, req.params.id]
+       WHERE id = $5 RETURNING id, name, email, role, status`,
+      [name, email?.toLowerCase(), role, status, req.params.id]
     );
 
     if (result.rowCount === 0) {

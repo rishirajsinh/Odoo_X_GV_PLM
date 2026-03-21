@@ -24,7 +24,7 @@ router.post('/login', [
     
     // SQL query to find user
     const result = await req.db(
-      'SELECT id, name, email, password, role, avatar FROM users WHERE email = $1',
+      'SELECT id, name, email, password, role FROM users WHERE email = $1',
       [email.toLowerCase()]
     );
 
@@ -67,7 +67,7 @@ router.post('/login', [
           name: user.name,
           email: user.email,
           role: user.role,
-          avatar: user.avatar
+          avatar: user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
         }
       }
     });
@@ -86,7 +86,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     // Current user is already attached to req.user by authMiddleware
     // But we re-fetch to ensure we have latest data
     const result = await req.db(
-      'SELECT id, name, email, role, avatar FROM users WHERE id = $1',
+      'SELECT id, name, email, role FROM users WHERE id = $1',
       [req.user.id]
     );
 
@@ -103,7 +103,7 @@ router.get('/me', authMiddleware, async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        avatar: user.avatar
+        avatar: user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
       }
     });
   } catch (error) {
