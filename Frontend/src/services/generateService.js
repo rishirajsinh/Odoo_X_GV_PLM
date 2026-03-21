@@ -2,9 +2,7 @@
 //  generateService.js — Smart ECO Description Generator API   //
 //  Calls POST /api/generate/description                       //
 // ============================================================//
-import { secureGet } from '../capacitor/nativeServices';
-
-const API_BASE = '${API_BASE_URL}';
+import { API_BASE_URL } from '../config/api';
 
 /**
  * Sends ECO + changes to backend, returns a professional description string.

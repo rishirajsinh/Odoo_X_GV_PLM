@@ -5,7 +5,7 @@
 //  Pure React + inline styles — works on web and Capacitor    //
 // ============================================================//
 import { useState, useEffect } from 'react';
-import { fetchRiskAnalysis } from '../../services/riskService';
+import { analyzeRisk } from '../../services/riskService';
 import { useTranslation } from 'react-i18next';
 
 export default function RiskAnalyzer({ ecoId }) {
@@ -22,7 +22,7 @@ export default function RiskAnalyzer({ ecoId }) {
     setLoading(true);
     setError(null);
 
-    fetchRiskAnalysis(ecoId)
+    analyzeRisk(ecoId)
       .then(data => {
         if (isMounted) {
           setRisk(data);

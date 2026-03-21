@@ -3,6 +3,7 @@
 //  Calls GET /api/ecos/:id/risk                               //
 // ============================================================//
 import { secureGet } from '../capacitor/nativeServices';
+import { API_BASE_URL } from '../config/api';
 
 /**
  * Fetches risk analysis for a specific ECO.
@@ -12,9 +13,9 @@ import { secureGet } from '../capacitor/nativeServices';
 export const analyzeRisk = async (ecoId, token) => {
   try {
     const res = await fetch(`${API_BASE_URL}/ecos/${ecoId}/risk`, {
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+        'Authorization': `Bearer ${token}`
       }
     });
 
