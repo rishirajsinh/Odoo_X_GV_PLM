@@ -45,7 +45,7 @@ export default function CTASection() {
           Stop losing money to uncontrolled changes.
         </h2>
         <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-          Join modern manufacturing companies who trust PLM Flow to keep their engineering data immaculate and strictly versioned.
+          Join modern manufacturing companies who trust PLM to keep their engineering data immaculate and strictly versioned.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

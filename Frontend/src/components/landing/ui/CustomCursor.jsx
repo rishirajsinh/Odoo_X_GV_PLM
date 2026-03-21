@@ -8,13 +8,10 @@ export default function CustomCursor() {
 
   // Hide default cursor ONLY while this component is mounted (landing page)
   // Automatically restores normal cursor when navigating away
+  // Removed cursor hiding logic to keep default OS mouse visible
   useEffect(() => {
-    document.documentElement.style.cursor = 'none'
-    document.body.style.cursor = 'none'
-    return () => {
-      document.documentElement.style.cursor = ''
-      document.body.style.cursor = ''
-    }
+    // Keep empty to respect React hooks index, or use for other setups
+    return () => {}
   }, [])
   useEffect(() => {
     let animationFrameId

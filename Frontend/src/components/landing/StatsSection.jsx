@@ -35,7 +35,7 @@ export default function StatsSection() {
           <GlassCard className="flex flex-col h-full bg-gradient-to-br from-white/60 to-white/40 hover:scale-[1.01] transition-transform">
             <Quote size={40} className="text-teal-500/20 mb-6" />
             <p className="text-lg md:text-xl text-slate-700 font-medium leading-relaxed mb-8 flex-1">
-              "We used to lose days figuring out which BoM version was actually on the shop floor. PLM Flow completely eliminated version drift overnight. Implementation took 2 hours."
+              "We used to lose days figuring out which BoM version was actually on the shop floor. PLM Enterprise completely eliminated version drift overnight. Implementation took 2 hours."
             </p>
             <div className="flex justify-between items-end border-t border-white/5 pt-6">
               <div className="flex items-center gap-4">

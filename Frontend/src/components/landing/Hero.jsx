@@ -87,7 +87,7 @@ export default function Hero() {
         <div ref={badgeRef} className="inline-flex items-center gap-2 mb-8 opacity-0 max-w-full">
           <div className="flex items-center gap-2 px-4 py-2 rounded-full glass text-xs sm:text-sm font-semibold text-[#312E24] cursor-pointer group hover:bg-white/40 transition-colors">
             <span className="text-[#312E24] drop-shadow-[0_0_8px_rgba(49,46,36,0.3)]">✦</span>
-            Introducing PLM Flow v1.0
+            Introducing PLM v1.0
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </div>
         </div>

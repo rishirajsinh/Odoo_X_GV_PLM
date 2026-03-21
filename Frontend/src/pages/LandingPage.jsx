@@ -13,6 +13,7 @@ import HowItWorks from '../components/landing/HowItWorks'
 import FeaturesSection from '../components/landing/FeaturesSection'
 import StatsSection from '../components/landing/StatsSection'
 import RolesSection from '../components/landing/RolesSection'
+import PricingSection from '../components/landing/PricingSection'
 import CTASection from '../components/landing/CTASection'
 import Footer from '../components/landing/Footer'
 import CustomCursor from '../components/landing/ui/CustomCursor'
@@ -94,6 +95,7 @@ export default function LandingPage() {
       <FeaturesSection />
       <StatsSection />
       <RolesSection />
+      <PricingSection />
       <CTASection />
       <Footer />
     </div>
