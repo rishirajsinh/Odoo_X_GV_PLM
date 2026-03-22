@@ -2,7 +2,7 @@ import { Users, ShieldCheck, GitMerge, Activity } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import { motion } from 'framer-motion';
 import { users } from '../../data/mockData';
-import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n/index';
 
 export default function AdminDashboard() {
   const t = (key, opt) => i18n.t(key, opt);

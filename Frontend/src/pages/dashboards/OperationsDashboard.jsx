@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import Card from '../../components/ui/Card';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n/index';
 
 export default function OperationsDashboard() {
   const t = (key, opt) => i18n.t(key, opt);
