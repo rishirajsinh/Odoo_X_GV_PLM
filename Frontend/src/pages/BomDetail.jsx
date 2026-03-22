@@ -19,7 +19,9 @@ export default function BomDetail() {
     );
   }
 
-  const totalCost = bom.components.reduce((sum, c) => sum + (c.cost * c.quantity), 0);
+  const components = bom.components || [];
+  const operations = bom.operations || [];
+  const totalCost = components.reduce((sum, c) => sum + ((c.cost || 0) * (c.quantity || 0)), 0);
 
   return (
     <div className="space-y-6">
@@ -63,7 +65,7 @@ export default function BomDetail() {
           <div className="px-6 py-4 border-b border-surface-100 flex items-center gap-2">
             <Wrench size={16} className="text-surface-400" />
             <h2 className="text-base font-semibold text-surface-800">{t('boms.components', 'Components')}</h2>
-            <span className="text-xs text-surface-400 ml-auto">{bom.components.length} {t('boms.parts', 'parts')} · {t('boms.total_cost', 'Total cost:')} ${totalCost.toFixed(2)}</span>
+            <span className="text-xs text-surface-400 ml-auto">{components.length} {t('boms.parts', 'parts')} · {t('boms.total_cost', 'Total cost:')} ${totalCost.toFixed(2)}</span>
           </div>
           
           {/* Desktop/Tablet Table View */}
@@ -79,7 +81,7 @@ export default function BomDetail() {
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-100">
-              {bom.components.map(c => (
+              {components.map(c => (
                 <tr key={c.id} className="hover:bg-surface-50 transition-colors">
                   <td className="px-6 py-3 text-sm font-medium text-surface-700">{c.name}</td>
                   <td className="px-6 py-3 text-sm font-mono text-surface-500">{c.partNumber}</td>
@@ -94,7 +96,7 @@ export default function BomDetail() {
 
           {/* Mobile List View */}
           <div className="flex flex-col sm:hidden divide-y divide-surface-100">
-            {bom.components.map(c => (
+            {components.map(c => (
               <div key={c.id} className="p-4 bg-surface-100 hover:bg-surface-50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
                   <div>
@@ -128,7 +130,7 @@ export default function BomDetail() {
             <h2 className="text-base font-semibold text-surface-800">{t('boms.operations', 'Operations')}</h2>
           </div>
           <div className="divide-y divide-surface-100">
-            {bom.operations.map((op, idx) => (
+            {operations.map((op, idx) => (
               <div key={op.id} className="px-6 py-4">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-6 h-6 rounded-full bg-primary-50 text-primary-600 text-[10px] font-bold flex items-center justify-center">{idx + 1}</span>
